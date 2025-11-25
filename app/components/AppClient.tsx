@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, createElement } from "react";
 
 export default function AppClient() {
   useEffect(() => {
@@ -18,20 +18,17 @@ export default function AppClient() {
 
     const loadComponents = async () => {
       try {
-        
         await loadScript("/components/base/Button.js");
         await loadScript("/components/base/Input.js");
         await loadScript("/components/base/NavigationBar.js");
         await loadScript("/components/base/NotificationsList.js");
         await loadScript("/components/base/HamburgerMenu.js");
 
-       
         await loadScript("/components/pages/LoginPage.js");
         await loadScript("/components/pages/HomePage.js");
         await loadScript("/components/pages/AgendarPage.js");
         await loadScript("/components/pages/ProfilePage.js");
 
-       
         await loadScript("/components/Router.js");
       } catch (error) {
         console.error("Error cargando componentes:", error);
@@ -43,7 +40,7 @@ export default function AppClient() {
 
   return (
     <div style={{ width: "100%", minHeight: "100vh" }}>
-      <app-router></app-router>
+      {createElement("app-router")}
     </div>
   );
 }
